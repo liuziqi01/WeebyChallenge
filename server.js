@@ -47,7 +47,7 @@ simpleselect.func = function (node) {
 
     );
 */
-node.setAttribute("src", "http://localhost:9000/handleUnsafeReq?oriUrl=");
+node.setAttribute("src", "http://localhost:9000/handleUnsafeReq?oriUrl="+tag.getAttribute("src"));
 
 
 };
@@ -78,14 +78,11 @@ node.setAttribute("src", "http://localhost:9000/handleUnsafeReq?oriUrl=");
         proxy_app.use(require('harmon')([], selects));
 
         proxy_app.use(function (req, res) {
-                 
-                 //res.send("Hello world, from proxy");
                  proxy.web(req, res);
                });
 
         http.createServer(proxy_app).listen(8000); //proxy server
-       // http.createServer(target_app).listen(9000);
-       target_app.listen(9000);
+       target_app.listen(9000); // target server
         /*
         http.createServer(function (req, res) {
          res.writeHead(200, { 'Content-Type': 'text/html' });
