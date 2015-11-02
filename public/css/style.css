@@ -1,0 +1,35 @@
+* {
+	border: 1px solid #000;
+}
+
+.main-heading {
+	font-weight: bold;
+	text-decoration: underline;
+	padding-left: 50px;
+	margin-right: 20px;
+}
+
+.italics {
+	font-style: italic;
+}
+
+#subheading {
+	margin-left: 20px;
+}
+
+.red-text {
+	color: red;
+}
+
+.footer {
+	margin-top: 20px;
+}
+
+.footer-content {
+	margin: 20px;
+	font-weight: bold;
+}
+
+p {
+	padding: 10px;
+}

@@ -1,0 +1,27 @@
+  #handle{
+            margin: 0;
+            position : absolute;
+    background-color: transparent;
+    border: 8px purple solid;
+        width: 16px;
+        height: 16px;
+        top: 34px;/* 25 */
+        left: 0px;
+        border-radius: 50%;
+        }
+
+        
+#stem{
+            position : absolute;
+            overflow: visible;
+             background-color: purple;
+        width: 64px;
+        height: 10px;
+        top: 45px;
+        left: 25px;
+        border-radius: 50px;
+        }
+
+#key div, #sytle div{
+          margin-left:0px;
+    } 
