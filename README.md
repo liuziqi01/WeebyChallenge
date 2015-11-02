@@ -113,3 +113,34 @@ exports.handleUnsafeReq= function(req, res) {
 }
 ```
 
+#####The difficulties:
+
+
+
+Most of the current proxy works good on parsing the request instead of parsing the server.
+
+
+Most of the proxy works on rewriting the header part of the response/request, will this function be useful in later stage of the project?
+
+
+
+
+#####Questions:
+
+
+
+Now the proxy works on a certain port….Though most of the proxy demo in this way, I’m questionable about whether this is a good practice? 
+
+
+
+#####Working on :
+
+
+
+I’m still working on how to pass the exact original url to the server.(currently, I pass every attribute in the original element, where most of them are useless. 
+Some src are not dangerous, i.e. local image…, try to distinguish them from others.
+Try to find a good policy that covers most of the case with dangerous link:
+	 src
+	data-imgsrc? 
+	href?
+	link (tag)
