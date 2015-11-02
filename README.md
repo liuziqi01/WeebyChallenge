@@ -137,10 +137,21 @@ Now the proxy works on a certain port….Though most of the proxy demo in this w
 
 
 
-I’m still working on how to pass the exact original url to the server.(currently, I pass every attribute in the original element, where most of them are useless. 
-Some src are not dangerous, i.e. local image…, try to distinguish them from others.
-Try to find a good policy that covers most of the case with dangerous link:
+1.I’m still working on how to pass the exact original url to the server.(currently, I pass every attribute in the original element, where most of them are useless. 
+
+
+
+2.Some src are not dangerous, i.e. local image…, try to distinguish them from others.
+
+
+
+3.Try to find a good policy that covers most of the case with dangerous link:
+
+
 	 src
+
 	data-imgsrc? 
+
 	href?
+	
 	link (tag)
