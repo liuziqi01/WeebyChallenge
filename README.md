@@ -1,9 +1,8 @@
-##My DMP Project - ziqi
-====
-
-A Proxy server which parses the response before it reached the client to redirect external requests back to orignal server.
+My DMP Project - ziqi
 =====
-Update on Nov.2 
+###A Proxy server which parses the response before it reached the client to redirect external requests back to orignal server.
+=====
+#### on Nov.2 
 
 
 
@@ -15,7 +14,7 @@ I use Node.js as the server and proxy server platform.
 
 
 
-To configure proxy, I used http-proxy-node module to sensor and rewrite the response, and harmon/trumpet module to parse the response.
+To configure proxy, I use http-proxy-node module to sensor and rewrite the response, and harmon/trumpet module to parse the response.
 
 
 
@@ -50,13 +49,9 @@ var simpleselect = {};
 
 simpleselect.query = '[src]';
 simpleselect.func = function (node) {
- // node = node.getAttribute("src","");
- 
-    console.log(node.name);
-
-  console.log("find a target");
+   console.log("find a target");
   /*
-          //Create a read/write stream wit the outer option 
+       //Create a read/write stream wit the outer option 
       //so we get the full tag and we can replace it
       var stm = node.createStream({ "outer" : true });
     //  var writeStm = node.createWriteStream();
@@ -77,10 +72,7 @@ simpleselect.func = function (node) {
       process.stdout.write('tag:   ' + tag + '\n');
       process.stdout.write('end:   ' + node.name + '\n');
 
-      stm.end('<img src = \"http://localhost:9000/handleUnsafeReq?oriUrl=\" height=\"42\" width=\"42\"');
-     
-  
-
+    stm.end('<img src = \"http://localhost:9000/handleUnsafeReq?oriUrl=\" height=\"42\" width=\"42\"');
     );
 */
 node.setAttribute("src", "http://localhost:9000/handleUnsafeReq?oriUrl="+tag.getAttribute("src"));
@@ -88,7 +80,6 @@ node.setAttribute("src", "http://localhost:9000/handleUnsafeReq?oriUrl="+tag.get
 
 };
   selects.push(simpleselect);
-
 ```
 Server and proxy server:
 
@@ -108,5 +99,17 @@ Server and proxy server:
 
         http.createServer(proxy_app).listen(8000); //proxy server
        target_app.listen(9000); 
+```
+
+The module in the normal server to handle the request:(not fully-function yet)
+```javascript
+exports.handleUnsafeReq= function(req, res) {
+	
+    console.log("I should request img from %s",req.query.oriUrl);
+ 
+      var img = fs.readFileSync('./public/img/safe.jpg');
+     res.writeHead(200, {'Content-Type': 'image/gif' });
+     res.end(img, 'binary');
+}
 ```
 
