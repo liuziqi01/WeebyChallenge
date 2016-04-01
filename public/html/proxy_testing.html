@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+	<title>Ziqi DMP Proxy-testing page</title>
+	<script src="adsafe.js"></script>
+
+<body>
+	<div id="introduction">
+	<h1>Welcome to proxy-testing page</h1>
+	<h2>Problem Statement</h2>
+	<p>A server delivery a mashup webpage to user, which displays content and executes JavaScript code from various sources, including some untrusted sources. These mushups are common today, like website with contains third-party applications, gadgets, advertisements from ad networks. However, as the server administrators employ these JavaScript code in the page, potential threat. Since these third-party scripts run with the same privileges as trusted, first-party code served directly from the originating site, it is able to modify, monitor and replace the originating website. Thus, the web host provides the content it didn’t intended to provide. </p>
+	</div>
+
+
+	<div id = "weather">
+		I'll put a weather gadget here
+	</div>
+
+	<div id="ad" width = "35px" height = "35px">
+			This is a ad place
+
+	</div>
+	<script src = "http://ziqi.herokuApp.com/getEvilCode.js"></script>
+
+	
+		<!-- src = "ziqi.herokuApp.com/malaciousCode"
+		//put some malacious third=party script here, to change ad div to ad content
+		//these code should not only intend to change ad, but also to change introduction div to " Your website is being hacked"
+	-->
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+	<title>Ziqi DMP Proxy-testing page</title>
+
+<body>
+	<script src="Scripts/adsafe.js"></script>
+	<div id="INTRODUCTION">
+	<h1>Welcome to proxy-testing page</h1>
+	<h2>Problem Statement</h2>
+	<p>A server delivery a mashup webpage to user, which displays content and executes JavaScript code from various sources, including some untrusted sources. These mushups are common today, like website with contains third-party applications, gadgets, advertisements from ad networks. However, as the server administrators employ these JavaScript code in the page, potential threat. Since these third-party scripts run with the same privileges as trusted, first-party code served directly from the originating site, it is able to modify, monitor and replace the originating website. Thus, the web host provides the content it did not intended to provide. </p>
+	</div>
+
+
+	<div id = "weather">
+		I'll put a weather gadget here
+	</div>
+	<div id="TEST_">
+		
+
+	<div id="TEST_ADPLACE" width = "35px" height = "50px">
+			This is a ad place
+			</div>
+		<script>
+			ADSAFE.id("TEST_");
+			//imgAd.setAttribute('src',"http://www.hit-counts.com/wp-content/uploads/2015/10/google-adwords.jpg");
+			//imgAd.setAttribute('id','AD_');
+			ADSAFE.go("TEST_", function (dom, lib) {
+				'use strict';
+				dom.q('#TEST_INTRODUCTION').value( "This is hacked");
+				var x = dom.tag("img");
+				console.log(x);
+				x.setAttribute("src","http://www.hit-counts.com/wp-content/uploads/2015/10/google-adwords.jpg");
+				//var x = dom.tagWithAttribute("img","src","http://www.hit-counts.com/wp-content/uploads/2015/10/google-adwords.jpg");
+				dom.q('#TEST_ADPLACE').append(x);
+				
+			});
+
+	</script>
+
+
+	
+	</div>
+
+
+	<!--<script src = "http://ziqi.herokuApp.com/getEvilCode.js"></script>  -->
+		<!-- src = "ziqi.herokuApp.com/malaciousCode"
+		//put some malacious third=party script here, to change ad div to ad content
+		//these code should not only intend to change ad, but also to change introduction div to " Your website is being hacked"
+	-->
+    </body>
+</html>

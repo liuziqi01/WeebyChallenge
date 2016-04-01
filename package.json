@@ -37,12 +37,17 @@
   "_resolved": "https://registry.npmjs.org/ejs/-/ejs-0.8.5.tgz",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "connect": "^3.4.0",
+    "colors": "^1.1.2",
+    "connect": "^3.4.1",
     "express": "^4.13.3",
+    "express-http-proxy": "^0.6.0",
     "harmon": "^1.3.1",
     "html": "0.0.10",
-    "http-proxy": "^1.12.0",
+    "http-proxy": "^1.13.2",
+    "jslint": "^0.9.6",
     "path": "^0.12.7",
-    "trumpet": "^1.7.2"
+    "request": "^2.67.0",
+    "trumpet": "^1.7.2",
+    "utils": "^0.3.1"
   }
 }
