@@ -64,7 +64,7 @@ exports.handleUnsafeImg= function(req, res) {
 exports.unsafe = function(req, res) 
 {
 
- res.render('unsafe.html');
+ res.render('calculator.html');
   
 };
 
@@ -79,7 +79,9 @@ exports.focus = function(req, res){
   res.send("proxy is working");
 }
 
-
+/*
+* rewrites the 3rd part script response to conform ADSafe
+*/
 var readFile = function(data,res){
     var lines = data.split(';');
     res.write("ADSAFE.go('ADSAFE_', function (document, lib) {'use strict';");
@@ -127,7 +129,7 @@ var translate = function(line){
   res = res.toString().replace(/createElement/g,"tag");
   res = res.toString().replace("innerHTML","value");
   res = res.toString().replace(/getElementById\(\'(.*)\'\)/g,replacer );
-  res = res.toString().replcae(/getElementByTagName/g, "q");
+  res = res.toString().replace(/getElementByTagName/g, "q");
 
   return res;
 }

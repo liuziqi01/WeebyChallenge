@@ -3,5 +3,6 @@ module.exports = function(app) {
 	app.get('/handleUnsafeScript',handlers.handleUnsafeScript);
     app.get('/handleUnsafeImg',handlers.handleUnsafeImg);
     app.get('/focus',handlers.focus);
+    app.get('/unsafe',handlers.unsafe);
     app.get('/adsafe.js',handlers.adsafeFile);
 }

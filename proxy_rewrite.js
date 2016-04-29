@@ -1,5 +1,8 @@
-
-var adPolicy = "ad";
+/*
+  adPolicy : the policies define t which part of HTML is okay to be accessed and modified by 3rd party script
+  proxyHHost : the domain name of your proxy
+*/
+var adPolicies = [".ad1"];
 var wrapperId= "ADSAFE_";
 var proxyHost="http://localhost:9000";
 var jsString = "<div id= \'" + wrapperId + "\'><script> ADSAFE.id(' "+wrapperId+" ');</script>";
@@ -8,17 +11,12 @@ var selects = [];
 var changeId = {};
 changeId.query = '[id]';
 changeId.func = function(node){
-  
-  //console.log(node.name);
-  //console.log("Find a target in href");
   var old_id = node.getAttribute('id');
-  if(old_id == adPolicy ){
-  //	var wrapperDiv = document.createElement('div');
-//wrapperDiv.id = wrapperId;
-  node.setAttribute('id',wrapperId+node.getAttribute('id').toUpperCase());
-  //console.log(node.createWriteStream({'outer':true}));
-  //wrapperDiv.appendChild(node);
-  var cloneNode;
+  //The adPolicy refers to an id
+  for (var adPolicy : adPolicies ){
+  if(adPolicy.charAt(0) == '#' && old_id == adPolicy.substring(1) ){
+    node.setAttribute('id',wrapperId+node.getAttribute('id').toUpperCase());
+
   var read = node.createReadStream({'outer':true});
   var write = node.createWriteStream({'outer':true});
   write.on('end',function(data){
@@ -27,8 +25,28 @@ changeId.func = function(node){
   write.write("<div id= 'ADSAFE_'><script>ADSAFE.id('ADSAFE_');</script>");
   
   read.pipe(write);
-  //write.end("</div>");
-  var innerhtml = "";
+  }
+}
+};
+
+changeClass.query = '[class]';
+changeClass.func = function(node){
+  var old_tagName = node.getAttribute('class');
+  //The adPolicy refers to an id
+  for (var adPolicy : adPolicies ){
+  if(adPolicy.charAt(0) == '.' && old_id == adPolicy.substring(1) ){
+    var read = node.createReadStream({'outer':true}); 
+    var write = node.createWriteStream({'outer':true});
+    write.on('end',function(data){
+      write.write("</div>");
+    });
+   write.write("<div id= 'ADSAFE_'><script>ADSAFE.id('ADSAFE_');</script>");
+  
+   read.pipe(write);
+  }
+}
+};
+
 
 /*
   read.on('data',function(data){
@@ -63,8 +81,7 @@ loudHTMLDStream.end();
   //node.createWriteStream({'outer':true}).end(jsString+"</div>");
   //node.parentNode.appendChild(wrapperDiv);
   //node.parentNode.removeChild(node);
-}
-};
+
 
 var redirScript ={};
 redirScript.query='script[src]';
